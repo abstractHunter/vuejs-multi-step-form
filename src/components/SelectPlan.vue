@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { usePriceStore } from '@/stores/price';
 
 import IconArcade from '../assets/images/icon-arcade.svg';
@@ -81,7 +81,6 @@ const selectPlan = (plan) => {
     font-size: 2.5rem;
     font-weight: 600;
     padding: 20px 0;
-    color: var(--marine-blue);
 }
 
 .subtitle {
@@ -124,7 +123,6 @@ const selectPlan = (plan) => {
 
 .plan h3 {
     font-size: 1.2rem;
-    color: var(--marine-blue);
 }
 
 
@@ -136,7 +134,6 @@ const selectPlan = (plan) => {
 
 .plan .months-free {
     font-size: 1rem;
-    color: var(--marine-blue);
     margin-top: 10px;
 }
 

@@ -21,14 +21,13 @@
             <input type="tel" id="phone" placeholder="e.g. +1 234 567 890" />
         </div>
     </div>
-</template>color: var(--marine-blue);
+</template>
 
 <style scoped>
 h2 {
     font-size: 2.5rem;
     font-weight: 600;
     padding: 20px 0;
-    color: var(--marine-blue);
 }
 
 p {
@@ -45,7 +44,6 @@ p {
     display: block;
     font-size: 18px;
     margin-bottom: 10px;
-    color: var(--marine-blue);
 }
 
 .form-group input {
@@ -55,7 +53,6 @@ p {
     border-radius: 8px;
     padding: 0 20px;
     font-size: 18px;
-    color: var(--marine-blue);
     padding: 24px 16px;
 }
 
@@ -66,10 +63,6 @@ p {
 
 .form-group input::placeholder {
     color: var(--cool-gray);
-}
-
-.form-group input:focus::placeholder {
-    color: var(--marine-blue);
 }
 
 .form-group input[type="email"] {
