@@ -55,7 +55,7 @@ const selectPlan = (plan) => {
         <p class="subtitle">You have the option of monthly or yearly billing.</p>
         <div class="plans">
             <div v-for="plan in plans" :key="plan.id" class="plan"
-                :class="{ 'selected-plan': priceStore.plan.id == plan.id }" @click="selectPlan(plan)">
+                :class="{ 'selected-plan': priceStore.plan && priceStore.plan.id == plan.id }" @click="selectPlan(plan)">
                 <img :src="plan.icon" alt="" />
                 <h3>{{ plan.name }}</h3>
                 <p class="price">
@@ -73,6 +73,8 @@ const selectPlan = (plan) => {
                 Yearly
             </label>
         </div>
+
+        <p v-if="priceStore.error" class="plan-error">You must choose a plan to continue</p>
     </div>
 </template>
 
@@ -194,5 +196,12 @@ const selectPlan = (plan) => {
 
 .duration label input:checked+span:after {
     transform: translateX(25px);
+}
+
+.plan-error {
+    color: var(--strawberry-red);
+    font-size: 1rem;
+    margin-top: 20px;
+    text-align: center;
 }
 </style>

@@ -1,13 +1,35 @@
 <script setup>
 import { useStepStore } from '@/stores/step';
+import { useUserStore } from '@/stores/user';
+import { usePriceStore } from '@/stores/price';
 
 const stepStore = useStepStore();
+const userStore = useUserStore();
+const priceStore = usePriceStore();
+
+const nextStep = () => {
+    if (stepStore.step == 1) {
+        userStore.validateAll();
+        if (userStore.errors.name || userStore.errors.email || userStore.errors.phoneNumber) {
+            return;
+        }
+    }
+
+    if (stepStore.step == 2) {
+        if (!priceStore.validate()) {
+            return;
+        }
+    }
+
+    stepStore.nextStep();
+};
+
 </script>
 
 <template>
     <div class="nav-buttons">
         <button v-if="stepStore.step > 1" @click="stepStore.previousStep()" class="button prev-button">Go Back</button>
-        <button v-if="stepStore.step < 4" @click="stepStore.nextStep()" class="button next-button">Next Step</button>
+        <button v-if="stepStore.step < 4" @click="nextStep()" class="button next-button">Next Step</button>
         <button v-if="stepStore.step == 4" @click="stepStore.nextStep()" class="button confirm-button">Confirm</button>
     </div>
 </template>

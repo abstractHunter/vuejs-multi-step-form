@@ -4,19 +4,19 @@ export const usePriceStore = defineStore('price', {
     state: () => {
         return {
             yearly: true,
-            plan: {},
+            plan: null,
             addons: [],
+            error: false,
         }
     },
     actions: {
-        setYearly() {
-            this.yearly = true;
-        },
-        setPlan(plan) {
-            this.plan = plan;
-        },
-        setAddons(addons) {
-            this.addons = addons;
+        validate() {
+            if (this.plan) {
+                this.error = false;
+                return true;
+            }
+            this.error = true;
+            return false;
         }
     }
 });
