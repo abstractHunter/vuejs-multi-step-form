@@ -20,7 +20,6 @@ const stepStore = useStepStore();
 
 .button {
     position: absolute;
-    padding: 16px 32px;
     border-radius: 8px;
     border: none;
     font-size: 16px;
@@ -32,7 +31,7 @@ const stepStore = useStepStore();
 .prev-button {
     background-color: transparent;
     color: var(--cool-gray);
-    left: 10px;
+    left: 0;
 }
 
 .prev-button:hover {
@@ -40,6 +39,7 @@ const stepStore = useStepStore();
 }
 
 .next-button {
+    padding: 16px 32px;
     background-color: var(--marine-blue);
     color: var(--white);
     right: 0;
@@ -50,6 +50,7 @@ const stepStore = useStepStore();
 }
 
 .confirm-button {
+    padding: 16px 32px;
     background-color: var(--purplish-blue);
     color: var(--white);
     right: 0;

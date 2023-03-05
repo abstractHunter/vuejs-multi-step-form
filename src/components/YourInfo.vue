@@ -27,7 +27,7 @@
 h2 {
     font-size: 2.5rem;
     font-weight: 600;
-    margin: 20px 0;
+    padding: 20px 0;
     color: var(--marine-blue);
 }
 

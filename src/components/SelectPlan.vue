@@ -1,13 +1,16 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { usePriceStore } from '@/stores/price';
+
 import IconArcade from '../assets/images/icon-arcade.svg';
 import IconAdvanced from '../assets/images/icon-advanced.svg';
 import IconPro from '../assets/images/icon-pro.svg';
 
-const checked = ref(false);
+
+const priceStore = usePriceStore();
 
 const duration = computed(() => {
-    return checked.value ? 'yr' : 'mo';
+    return priceStore.yearly ? 'yr' : 'mo';
 })
 
 const plans = [
@@ -39,6 +42,11 @@ const plans = [
         },
     },
 ]
+
+const selectPlan = (plan) => {
+    priceStore.plan = plan;
+}
+
 </script>
 
 <template>
@@ -46,7 +54,8 @@ const plans = [
         <h2 class="title">Select your plan</h2>
         <p class="subtitle">You have the option of monthly or yearly billing.</p>
         <div class="plans">
-            <div v-for="plan in plans" :key="plan.id" class="plan">
+            <div v-for="plan in plans" :key="plan.id" class="plan"
+                :class="{ 'selected-plan': priceStore.plan.id == plan.id }" @click="selectPlan(plan)">
                 <img :src="plan.icon" alt="" />
                 <h3>{{ plan.name }}</h3>
                 <p class="price">
@@ -59,7 +68,7 @@ const plans = [
         <div class="duration">
             <label for="published">
                 Monthly
-                <input type="checkbox" v-model="checked" id="published" />
+                <input type="checkbox" v-model="priceStore.yearly" id="published" />
                 <span></span>
                 Yearly
             </label>
@@ -71,7 +80,7 @@ const plans = [
 .title {
     font-size: 2.5rem;
     font-weight: 600;
-    margin: 20px 0;
+    padding: 20px 0;
     color: var(--marine-blue);
 }
 
@@ -96,6 +105,11 @@ const plans = [
     padding: 20px;
     cursor: pointer;
     border: 1px solid var(--light-gray);
+}
+
+.selected-plan {
+    border: 1px solid var(--purplish-blue);
+    background-color: var(--magnolia);
 }
 
 .plan:hover {
