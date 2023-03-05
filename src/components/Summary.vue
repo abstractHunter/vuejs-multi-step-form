@@ -27,7 +27,7 @@ let total = computed(() => {
         <h2 class="title">Finishing up</h2>
         <p class="subtitle">Double-check everything looks OK before confirming.</p>
 
-        <div class="summary" v-if="priceStore.plan != [] && priceStore.addons.length > 0">
+        <div class="summary" v-if="priceStore.plan != {}">
             <div class="summary-plan">
                 <div class="summary-plan-title">
                     <span>{{ priceStore.plan.name }} ({{ period.long }})</span>
@@ -45,7 +45,7 @@ let total = computed(() => {
             </div>
         </div>
 
-        <div class="total" v-if="priceStore.plan != [] && priceStore.addons.length > 0">
+        <div class="total" v-if="priceStore.plan != {}">
             <span>Total ({{ period.verylong }})</span>
             <span>${{ total }}/{{ period.short }}</span>
         </div>
